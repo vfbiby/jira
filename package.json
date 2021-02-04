@@ -14,6 +14,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "eslint-config-prettier": "^7.2.0",
+    "jira-dev-tool": "^1.7.8",
     "json-server": "^0.16.3",
     "prettier": "^2.2.1",
     "qs": "^6.9.6",
@@ -31,10 +32,18 @@
     "json-server": "json-server ./__json_server_mock__/db.json --watch --port 3001 --middlewares ./__json_server_mock__/middleware.js"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest", "prettier"]
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
