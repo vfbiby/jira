@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import { TSReactTest } from 'try-use-array';
+import { LoginScreen } from 'screens/login';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TSReactTest />
+        <LoginScreen />
       </header>
     </div>
   );
