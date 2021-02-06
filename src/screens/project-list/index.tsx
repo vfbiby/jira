@@ -33,7 +33,7 @@ export const ProjectListScreen = () => {
     <Container>
       <h1>项目列表</h1>
       <SearchPanel users={users} param={param} setParam={setParam} />
-      <List isloading={isLoading} users={users} list={list} />
+      <List loading={isLoading} users={users} dataSource={list} />
     </Container>
   );
 };
