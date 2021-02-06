@@ -3,6 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { ProjectListScreen } from 'screens/project-list';
 import { Row } from 'components/lib';
+import { Dropdown, Menu } from 'antd';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -17,7 +18,7 @@ import { Row } from 'components/lib';
  */
 
 export const AuthenticatedApp = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <Container>
@@ -28,7 +29,15 @@ export const AuthenticatedApp = () => {
           <h3>用户</h3>
         </HeaderLeft>
         <HeaderRight>
-          <button onClick={logout}>Logout</button>
+          <Dropdown
+            overlay={
+              <Menu.Item key={'logout'}>
+                <a onClick={logout}>logout</a>
+              </Menu.Item>
+            }
+          >
+            <a onClick={(e) => e.preventDefault()}>Hi, {user?.name}</a>
+          </Dropdown>
         </HeaderRight>
       </Header>
       <Main>
@@ -43,7 +52,11 @@ const Container = styled.div`
   grid-template-rows: 6rem 1fr;
   height: 100vh;
 `;
-const Header = styled(Row)``;
+const Header = styled(Row)`
+  padding: 3.2rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1;
+`;
 const HeaderLeft = styled(Row)``;
 const HeaderRight = styled.div``;
 const Main = styled.main``;
