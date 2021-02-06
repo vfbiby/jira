@@ -15,11 +15,13 @@ interface Project {
 interface ListProps {
   list: Project[];
   users: User[];
+  isloading: boolean;
 }
 
-export const List = ({ users, list }: ListProps) => {
+export const List = ({ users, list, isloading }: ListProps) => {
   return (
     <Table
+      loading={isloading}
       dataSource={list}
       pagination={false}
       rowKey="id"
