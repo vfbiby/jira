@@ -30,30 +30,19 @@ export const AuthenticatedApp = () => {
           <button onClick={logout}>Logout</button>
         </HeaderRight>
       </Header>
-      <Nav>nav</Nav>
       <Main>
         <ProjectListScreen />
       </Main>
-      <Aside>aside</Aside>
-      <Footer>footer</Footer>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 6rem 1fr 6rem;
-  grid-template-columns: 20rem 1fr 20rem;
-  grid-template-areas:
-    'header header header'
-    'aside main nav'
-    'footer footer footer';
+  grid-template-rows: 6rem 1fr;
   height: 100vh;
-  grid-gap: 10rem;
 `;
 const Header = styled.header`
-  border: 1px solid red;
-  grid-area: header;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,21 +54,6 @@ const HeaderLeft = styled.div`
   align-items: center;
 `;
 const HeaderRight = styled.div``;
-const Main = styled.main`
-  border: 1px solid red;
-  grid-area: main;
-`;
-const Nav = styled.nav`
-  border: 1px solid red;
-  grid-area: nav;
-`;
-const Aside = styled.aside`
-  border: 1px solid red;
-  grid-area: aside;
-`;
-const Footer = styled.footer`
-  border: 1px solid red;
-  grid-area: footer;
-`;
+const Main = styled.main``;
 
 export default AuthenticatedApp;
