@@ -22,15 +22,18 @@ export const List = ({ users, list }: ListProps) => {
     <Table
       dataSource={list}
       pagination={false}
+      rowKey="id"
       columns={[
         {
           title: '名称',
           dataIndex: 'name',
           sorter: (a, b) => a.name.localeCompare(b.name),
+          key: 'name',
         },
         {
           title: '部门',
           dataIndex: 'organization',
+          key: 'organization',
         },
         {
           title: '负责人',
@@ -42,6 +45,7 @@ export const List = ({ users, list }: ListProps) => {
               </span>
             );
           },
+          key: 'project.personId',
         },
         {
           title: '创建时间',
@@ -54,6 +58,7 @@ export const List = ({ users, list }: ListProps) => {
               </span>
             );
           },
+          key: 'project.created',
         },
       ]}
     ></Table>

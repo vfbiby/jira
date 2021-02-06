@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { ProjectListScreen } from 'screens/project-list';
 import { Row } from 'components/lib';
-import { Dropdown, Menu } from 'antd';
+import { Button, Dropdown, Menu } from 'antd';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -18,7 +18,7 @@ import { Dropdown, Menu } from 'antd';
  */
 
 export const AuthenticatedApp = () => {
-  const { logout, user } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Container>
@@ -32,11 +32,11 @@ export const AuthenticatedApp = () => {
           <Dropdown
             overlay={
               <Menu.Item key={'logout'}>
-                <a onClick={logout}>logout</a>
+                <Button type="link">logout</Button>
               </Menu.Item>
             }
           >
-            <a onClick={(e) => e.preventDefault()}>Hi, {user?.name}</a>
+            <Button type="link">Hi, {user?.name}</Button>
           </Dropdown>
         </HeaderRight>
       </Header>

@@ -4482,12 +4482,7 @@ date-fns@^2.15.0:
   resolved "https://registry.npm.taobao.org/date-fns/download/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha1-BXdXksPzMx2oEq8lPhqTWFHTg0s=
 
-dayjs@^1.10.4:
-  version "1.10.4"
-  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
-  integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
-
-dayjs@^1.8.30:
+dayjs@^1.10.4, dayjs@^1.8.30:
   version "1.10.4"
   resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.10.4.tgz?cache=0&sync_timestamp=1611310021152&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
   integrity sha1-jlRKm4aD9heD9XCYCoqA6vVKseI=
@@ -7512,15 +7507,25 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
-jira-dev-tool@^1.7.8:
+jira-dev-tool@^1.6.13:
   version "1.7.8"
-  resolved "https://registry.npm.taobao.org/jira-dev-tool/download/jira-dev-tool-1.7.8.tgz#f0c83c9f1d56da948542bcc07f60c124673418eb"
-  integrity sha1-8Mg8nx1W2pSFQrzAf2DBJGc0GOs=
+  resolved "https://registry.npmjs.org/jira-dev-tool/-/jira-dev-tool-1.7.8.tgz#f0c83c9f1d56da948542bcc07f60c124673418eb"
+  integrity sha512-mbi/9ZUVNOKbDv7DjiNF37E+sMDxhPjWzjJ6R8B50VizKJkG8gzkP0Mtspigu0howrzWyJFITA9YFTRShx89kw==
   dependencies:
     antd "^4.9.1"
     msw "^0.24.1"
     react-query "^2.26.3"
     react-query-devtools "^2.6.3"
+
+jira-dev-tool@^1.6.55:
+  version "1.6.55"
+  resolved "https://registry.npmjs.org/jira-dev-tool/-/jira-dev-tool-1.6.55.tgz#f3425cb171ce7b7b69d3fd833caba0defa412904"
+  integrity sha512-yZU7V+e+T6ATi0CjpNBtwQAbg3A6LseifxgERPicrvamG0Jrdzv6SyzOV2P8r02GgfMh+OblvPVX9Xja0utwEA==
+  dependencies:
+    antd "^4.9.1"
+    jira-dev-tool "^1.6.13"
+    msw "^0.24.1"
+    react-query "^3.5.10"
 
 jju@^1.1.0:
   version "1.4.0"
@@ -8131,6 +8136,14 @@ match-sorter@^4.1.0:
   integrity sha1-V1tLNzcYW6lRi2dhK2aHfqCzc1g=
   dependencies:
     "@babel/runtime" "^7.10.5"
+    remove-accents "0.4.2"
+
+match-sorter@^6.0.2:
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/match-sorter/-/match-sorter-6.2.0.tgz#e3f29d4733ef835a0baccc7b9d291c07264985e8"
+  integrity sha512-yhmUTR5q6JP/ssR1L1y083Wp+C+TdR8LhYTxWI4IRgEUr8IXJu2mE6L3SwryCgX95/5J7qZdEg0G091sOxr1FQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
     remove-accents "0.4.2"
 
 md5.js@^1.3.4:
@@ -10673,6 +10686,14 @@ react-query@^2.26.3:
   integrity sha1-GCObTAth0LdE8NSpH1ZrKU+p91I=
   dependencies:
     "@babel/runtime" "^7.5.5"
+
+react-query@^3.5.10, react-query@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.npmjs.org/react-query/-/react-query-3.7.1.tgz#cbd15d84507431e8c3b248a1069401cb0feda396"
+  integrity sha512-n9Ld5UUzCWqqDDPvdRN45tvTYSBjuWHex2ninxIu+tD20pwfHR8QzPnntYPkc/h/wW4Q48m68FgXVi/co/1CKg==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    match-sorter "^6.0.2"
 
 react-refresh@^0.8.3:
   version "0.8.3"
