@@ -1,5 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import { useAuth } from 'context/auth-context';
+import { LongButton } from './index';
 import React from 'react';
 
 export const LoginScreen = () => {
@@ -33,7 +34,7 @@ export const LoginScreen = () => {
       >
         <Input />
       </Form.Item>
-      <Button htmlType="submit">login</Button>
+      <LongButton htmlType="submit">login</LongButton>
     </Form>
   );
 };
