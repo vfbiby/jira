@@ -4,10 +4,12 @@ import { SearchPanel } from './search-panel';
 import { cleanObject, useDebounce, useMount } from 'utilities';
 import { useHttp } from 'utilities/http';
 import styled from '@emotion/styled';
+import { Typography } from 'antd';
 
 export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<null | Error>(null);
 
   const [param, setParam] = useState({
     name: '',
@@ -21,6 +23,10 @@ export const ProjectListScreen = () => {
     setIsLoading(true);
     client('projects', { data: cleanObject(debouncedValue) })
       .then(setList)
+      .catch((error) => {
+        setList([]);
+        setError(error);
+      })
       .finally(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
@@ -33,6 +39,9 @@ export const ProjectListScreen = () => {
     <Container>
       <h1>项目列表</h1>
       <SearchPanel users={users} param={param} setParam={setParam} />
+      {error ? (
+        <Typography.Text type="danger">{error.message}</Typography.Text>
+      ) : null}
       <List loading={isLoading} users={users} dataSource={list} />
     </Container>
   );
