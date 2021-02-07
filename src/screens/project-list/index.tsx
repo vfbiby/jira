@@ -1,33 +1,28 @@
 import { useEffect, useState } from 'react';
-import { List } from './list';
+import { List, Project } from './list';
 import { SearchPanel } from './search-panel';
 import { cleanObject, useDebounce, useMount } from 'utilities';
 import { useHttp } from 'utilities/http';
 import styled from '@emotion/styled';
 import { Typography } from 'antd';
+import { useAsync } from 'utilities/use-async';
 
 export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<null | Error>(null);
+  //const [isLoading, setIsLoading] = useState(false);
+  //const [error, setError] = useState<null | Error>(null);
+  const { run, isLoading, error, data: list } = useAsync<Project[]>();
 
   const [param, setParam] = useState({
     name: '',
     personId: '',
   });
-  const [list, setList] = useState([]);
+  //const [list, setList] = useState([]);
   const debouncedValue = useDebounce(param, 500);
   const client = useHttp();
 
   useEffect(() => {
-    setIsLoading(true);
-    client('projects', { data: cleanObject(debouncedValue) })
-      .then(setList)
-      .catch((error) => {
-        setList([]);
-        setError(error);
-      })
-      .finally(() => setIsLoading(false));
+    run(client('projects', { data: cleanObject(debouncedValue) }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
@@ -42,7 +37,7 @@ export const ProjectListScreen = () => {
       {error ? (
         <Typography.Text type="danger">{error.message}</Typography.Text>
       ) : null}
-      <List loading={isLoading} users={users} dataSource={list} />
+      <List loading={isLoading} users={users} dataSource={list || []} />
     </Container>
   );
 };

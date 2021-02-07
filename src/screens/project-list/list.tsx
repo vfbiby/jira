@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import React from 'react';
 import { User } from './search-panel';
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;
@@ -36,7 +36,7 @@ export const List = ({ users, ...props }: ListProps) => {
         },
         {
           title: '负责人',
-          render(value, project) {
+          render(_, project) {
             return (
               <span>
                 {users.find((user: User) => user.id === project.personId)
@@ -48,7 +48,7 @@ export const List = ({ users, ...props }: ListProps) => {
         },
         {
           title: '创建时间',
-          render(value, project) {
+          render(_, project) {
             return (
               <span>
                 {project.created
