@@ -2,6 +2,7 @@ import { Form, Input } from 'antd';
 import { useAuth } from 'context/auth-context';
 import { LongButton } from './index';
 import React from 'react';
+import { useAsync } from 'utilities/use-async';
 
 export const LoginScreen = ({
   onError,
@@ -9,13 +10,17 @@ export const LoginScreen = ({
   onError: (error: Error) => void;
 }) => {
   const { login, user } = useAuth();
+  const { run, isLoading, error } = useAsync(undefined, {
+    throwOnError: false,
+  });
 
   const handleSubmit = (values: { username: string; password: string }) => {
-    login(values).catch(onError);
+    run(login(values)).catch(onError);
   };
 
   return (
     <Form onFinish={handleSubmit}>
+      {error && error.message}
       {user ? (
         <div>
           <div>Login success!</div>
@@ -38,7 +43,9 @@ export const LoginScreen = ({
       >
         <Input />
       </Form.Item>
-      <LongButton htmlType="submit">login</LongButton>
+      <LongButton loading={isLoading} htmlType="submit">
+        login
+      </LongButton>
     </Form>
   );
 };
