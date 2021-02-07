@@ -3,11 +3,22 @@ import { useAuth } from 'context/auth-context';
 import React from 'react';
 import { LongButton } from './index';
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { register } = useAuth();
 
-  const handleSubmit = (values: { username: string; password: string }) => {
-    register(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await register(values);
+    } catch (error) {
+      onError(error);
+    }
   };
 
   return (

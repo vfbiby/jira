@@ -3,11 +3,15 @@ import { useAuth } from 'context/auth-context';
 import { LongButton } from './index';
 import React from 'react';
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { login, user } = useAuth();
 
   const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+    login(values).catch(onError);
   };
 
   return (
