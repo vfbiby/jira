@@ -10,8 +10,8 @@ export const LoginScreen = ({
   onError: (error: Error) => void;
 }) => {
   const { login, user } = useAuth();
-  const { run, isLoading, error } = useAsync(undefined, {
-    throwOnError: false,
+  const { run, isLoading } = useAsync(undefined, {
+    throwOnError: true,
   });
 
   const handleSubmit = (values: { username: string; password: string }) => {
@@ -20,7 +20,6 @@ export const LoginScreen = ({
 
   return (
     <Form onFinish={handleSubmit}>
-      {error && error.message}
       {user ? (
         <div>
           <div>Login success!</div>
