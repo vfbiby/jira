@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { List } from './list';
 import { SearchPanel } from './search-panel';
 import { useDebounce, useDocumentTitle } from 'utilities';
@@ -9,11 +8,7 @@ import { useUsers } from 'utilities/use-users';
 import { useUrlQueryParam } from 'utilities/url';
 
 export const ProjectListScreen = () => {
-  const [, setParam] = useState({
-    name: '',
-    personId: '',
-  });
-  const [param] = useUrlQueryParam(['name', 'personId']);
+  const [param, setParam] = useUrlQueryParam(['name', 'personId']);
   const debouncedValue = useDebounce(param, 500);
   const { isLoading, error, data: list } = useProjects(debouncedValue);
   const { data: users } = useUsers();
@@ -32,7 +27,7 @@ export const ProjectListScreen = () => {
   );
 };
 
-ProjectListScreen.whyDidYouRender = true;
+ProjectListScreen.whyDidYouRender = false;
 
 const Container = styled.div`
   padding: 3.2rem;
