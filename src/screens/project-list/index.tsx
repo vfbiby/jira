@@ -9,15 +9,14 @@ import { useUsers } from 'utilities/use-users';
 import { useUrlQueryParam } from 'utilities/url';
 
 export const ProjectListScreen = () => {
-  const [param, setParam] = useState({
+  const [, setParam] = useState({
     name: '',
     personId: '',
   });
+  const [param] = useUrlQueryParam(['name', 'personId']);
   const debouncedValue = useDebounce(param, 500);
   const { isLoading, error, data: list } = useProjects(debouncedValue);
   const { data: users } = useUsers();
-
-  console.log(useUrlQueryParam(['name', 'age']));
 
   useDocumentTitle('项目列表', false);
 
@@ -32,6 +31,8 @@ export const ProjectListScreen = () => {
     </Container>
   );
 };
+
+ProjectListScreen.whyDidYouRender = true;
 
 const Container = styled.div`
   padding: 3.2rem;
