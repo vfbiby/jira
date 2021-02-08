@@ -3,6 +3,7 @@ import { useAuth } from 'context/auth-context';
 import { LongButton } from './index';
 import React from 'react';
 import { useAsync } from 'utilities/use-async';
+import { useDocumentTitle } from 'utilities';
 
 export const LoginScreen = ({
   onError,
