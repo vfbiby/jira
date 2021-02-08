@@ -1,6 +1,7 @@
 import { Table, TableProps } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { User } from './search-panel';
 
 export interface Project {
@@ -25,14 +26,14 @@ export const List = ({ users, ...props }: ListProps) => {
       columns={[
         {
           title: '名称',
-          dataIndex: 'name',
           sorter: (a, b) => a.name.localeCompare(b.name),
-          key: 'name',
+          render(value, project) {
+            return <Link to={String(project.id)}>{project.name}</Link>;
+          },
         },
         {
           title: '部门',
           dataIndex: 'organization',
-          key: 'organization',
         },
         {
           title: '负责人',
@@ -44,7 +45,6 @@ export const List = ({ users, ...props }: ListProps) => {
               </span>
             );
           },
-          key: 'project.personId',
         },
         {
           title: '创建时间',
@@ -57,7 +57,6 @@ export const List = ({ users, ...props }: ListProps) => {
               </span>
             );
           },
-          key: 'project.created',
         },
       ]}
     ></Table>
