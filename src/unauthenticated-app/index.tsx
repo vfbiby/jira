@@ -3,13 +3,10 @@ import { useState } from 'react';
 import { LoginScreen } from './login';
 import { RegisterScreen } from './register';
 import styled from '@emotion/styled';
-import { useDocumentTitle } from 'utilities';
 
 export const UnauthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-
-  useDocumentTitle('请登录注册以继续!', false);
 
   return (
     <Container>

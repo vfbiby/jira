@@ -15,6 +15,8 @@ export const LoginScreen = ({
     throwOnError: true,
   });
 
+  useDocumentTitle('登录页面', false);
+
   const handleSubmit = (values: { username: string; password: string }) => {
     run(login(values)).catch(onError);
   };
