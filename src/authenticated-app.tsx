@@ -7,6 +7,7 @@ import { Button, Dropdown, Menu } from 'antd';
 import { Navigate, Route, Routes } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ProjectScreen } from 'screens/project';
+import { resetRoute } from 'utilities';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -29,9 +30,10 @@ export const AuthenticatedApp = () => {
           <Routes>
             <Route path={'/projects'} element={<ProjectListScreen />}></Route>
             <Route
-              path={'/projects/:projectId'}
+              path={'/projects/:projectId/*'}
               element={<ProjectScreen />}
             ></Route>
+            <Navigate to={window.location.pathname + '/projects'} />
           </Routes>
         </Router>
       </Main>
@@ -45,7 +47,9 @@ const PageHeader = () => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
-        <h3>Logo</h3>
+        <Button type="link" onClick={resetRoute}>
+          Jira
+        </Button>
         <h3>项目</h3>
         <h3>用户</h3>
       </HeaderLeft>

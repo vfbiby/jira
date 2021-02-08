@@ -70,3 +70,7 @@ export const useDocumentTitle = (title: string, keepOnUnMount: false) => {
     };
   }, [title]);
 };
+
+export const resetRoute = () => {
+  window.location.href = window.location.origin;
+};
