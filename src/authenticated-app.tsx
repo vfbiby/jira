@@ -42,8 +42,6 @@ export const AuthenticatedApp = () => {
 };
 
 const PageHeader = () => {
-  const { user, logout } = useAuth();
-
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
@@ -54,21 +52,29 @@ const PageHeader = () => {
         <h3>用户</h3>
       </HeaderLeft>
       <HeaderRight>
-        <Dropdown
-          overlay={
-            <Menu>
-              <Menu.Item key={'logout'}>
-                <Button type="link" onClick={logout}>
-                  logout
-                </Button>
-              </Menu.Item>
-            </Menu>
-          }
-        >
-          <Button type="link">Hi, {user?.name}</Button>
-        </Dropdown>
+        <User />
       </HeaderRight>
     </Header>
+  );
+};
+
+const User = () => {
+  const { user, logout } = useAuth();
+
+  return (
+    <Dropdown
+      overlay={
+        <Menu>
+          <Menu.Item key={'logout'}>
+            <Button type="link" onClick={logout}>
+              logout
+            </Button>
+          </Menu.Item>
+        </Menu>
+      }
+    >
+      <Button type="link">Hi, {user?.name}</Button>
+    </Dropdown>
   );
 };
 
