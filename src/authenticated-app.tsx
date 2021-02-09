@@ -1,5 +1,5 @@
 import { useAuth } from 'context/auth-context';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { ProjectListScreen } from 'screens/project-list';
 import { Row } from 'components/lib';
@@ -8,6 +8,7 @@ import { Navigate, Route, Routes } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ProjectScreen } from 'screens/project';
 import { resetRoute } from 'utilities';
+import { ProjectModal } from 'screens/project-list/project-modal';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -22,9 +23,11 @@ import { resetRoute } from 'utilities';
  */
 
 export const AuthenticatedApp = () => {
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
       <PageHeader />
+      <Button onClick={() => setProjectModalOpen(true)}>open</Button>
       <Main>
         <Router>
           <Routes>
@@ -37,6 +40,10 @@ export const AuthenticatedApp = () => {
           </Routes>
         </Router>
       </Main>
+      <ProjectModal
+        projectModalOpen={projectModalOpen}
+        onClose={() => setProjectModalOpen(false)}
+      />
     </Container>
   );
 };
