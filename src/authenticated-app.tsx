@@ -10,6 +10,7 @@ import { ProjectScreen } from 'screens/project';
 import { resetRoute } from 'utilities';
 import { ProjectModal } from 'screens/project-list/project-modal';
 import { ProjectPopvoer } from 'components/project-popover';
+import { Undo } from 'screens/undo';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -49,7 +50,8 @@ export const AuthenticatedApp = () => {
                       onClick={() => setProjectModalOpen(true)}
                       type="link"
                     >
-                      创建项目
+                      {' '}
+                      创建项目{' '}
                     </ButtonNoPadding>
                   }
                 />
@@ -59,6 +61,7 @@ export const AuthenticatedApp = () => {
               path={'/projects/:projectId/*'}
               element={<ProjectScreen />}
             ></Route>
+            <Route path="/undo" element={<Undo />}></Route>
             <Navigate to={window.location.pathname + '/projects'} />
           </Routes>
         </Router>
