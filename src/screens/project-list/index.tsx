@@ -2,7 +2,7 @@ import { List } from './list';
 import { SearchPanel } from './search-panel';
 import { useDebounce, useDocumentTitle } from 'utilities';
 import styled from '@emotion/styled';
-import { Button, Typography } from 'antd';
+import { Typography } from 'antd';
 import { useProjects } from 'utilities/use-projects';
 import { useUsers } from 'utilities/use-users';
 import { useProjectsSearchParams } from './util';

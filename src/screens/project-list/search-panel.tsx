@@ -1,4 +1,4 @@
-import { Form, Input, Select } from 'antd';
+import { Form, Input } from 'antd';
 import { UserSelect } from 'components/user-select';
 import React from 'react';
 import { Project } from './list';
@@ -18,7 +18,7 @@ interface SearchPanelProps {
   setParam: (param: SearchPanelProps['param']) => void;
 }
 
-export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
+export const SearchPanel = ({ param, setParam }: SearchPanelProps) => {
   return (
     <Form style={{ marginBottom: '2rem' }} layout={'inline'}>
       <Form.Item>
