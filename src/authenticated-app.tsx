@@ -2,7 +2,7 @@ import { useAuth } from 'context/auth-context';
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { ProjectListScreen } from 'screens/project-list';
-import { Row } from 'components/lib';
+import { ButtonNoPadding, Row } from 'components/lib';
 import { Button, Dropdown, Menu } from 'antd';
 import { Navigate, Route, Routes } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -27,11 +27,16 @@ export const AuthenticatedApp = () => {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader />
+      <PageHeader setProjectModalOpen={setProjectModalOpen} />
       <Main>
         <Router>
           <Routes>
-            <Route path={'/projects'} element={<ProjectListScreen />}></Route>
+            <Route
+              path={'/projects'}
+              element={
+                <ProjectListScreen setProjectModalOpen={setProjectModalOpen} />
+              }
+            ></Route>
             <Route
               path={'/projects/:projectId/*'}
               element={<ProjectScreen />}
@@ -48,14 +53,20 @@ export const AuthenticatedApp = () => {
   );
 };
 
-const PageHeader = () => {
+const PageHeader = (props: {
+  setProjectModalOpen: (isOpen: boolean) => void;
+}) => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
-        <Button type="link" onClick={resetRoute}>
+        <ButtonNoPadding
+          style={{ padding: 0 }}
+          type="link"
+          onClick={resetRoute}
+        >
           Jira
-        </Button>
-        <ProjectPopvoer />
+        </ButtonNoPadding>
+        <ProjectPopvoer setProjectModalOpen={props.setProjectModalOpen} />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
