@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface State<D> {
   error: Error | null;
@@ -25,6 +25,7 @@ export const useAsync = <D>(
     ...defaultInitialState,
     ...initialState,
   });
+  const [retry, setRetry] = useState(() => () => {});
 
   const setData = (data: D) =>
     setState({
@@ -40,10 +41,18 @@ export const useAsync = <D>(
       data: null,
     });
 
-  const run = async (promise: Promise<D>) => {
+  const run = async (
+    promise: Promise<D>,
+    runConfig?: { retry: () => Promise<D> }
+  ) => {
     if (!promise || !promise.then) {
       throw new Error('please give me a Promise');
     }
+    setRetry(() => () => {
+      if (runConfig?.retry) {
+        run(runConfig?.retry(), runConfig);
+      }
+    });
     setState({ ...state, status: 'loading' });
     return promise
       .then((data) => {
@@ -65,6 +74,8 @@ export const useAsync = <D>(
     run,
     setData,
     setError,
+    // retry 被调用时重新跑一遍run, 让state刷新一遍
+    retry,
     ...state,
   };
 };
