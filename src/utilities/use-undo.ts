@@ -1,21 +1,6 @@
 import { useState } from 'react';
 
-interface Actions<T> {
-  set: (newPresent: T) => void;
-  reset: (newPresent: T) => void;
-  undo: () => void;
-  redo: () => void;
-  canUndo: boolean;
-  canRedo: boolean;
-}
-
-interface State<T> {
-  past: T[];
-  present: T;
-  future: T[];
-}
-
-export const useUndo = <T>(initialPresent: T): [State<T>, Actions<T>] => {
+export const useUndo = <T>(initialPresent: T) => {
   const [past, setPast] = useState<T[]>([]);
   const [present, setPresent] = useState(initialPresent);
   const [future, setFuture] = useState<T[]>([]);
@@ -62,5 +47,5 @@ export const useUndo = <T>(initialPresent: T): [State<T>, Actions<T>] => {
   return [
     { past, present, future },
     { set, reset, undo, redo, canUndo, canRedo },
-  ];
+  ] as const;
 };
