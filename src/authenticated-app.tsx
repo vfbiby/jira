@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ProjectScreen } from 'screens/project';
 import { resetRoute } from 'utilities';
 import { ProjectModal } from 'screens/project-list/project-modal';
+import { ProjectPopvoer } from 'components/project-popover';
 
 /**
  * grid 和 flex 各自应用的场景
@@ -27,7 +28,6 @@ export const AuthenticatedApp = () => {
   return (
     <Container>
       <PageHeader />
-      <Button onClick={() => setProjectModalOpen(true)}>open</Button>
       <Main>
         <Router>
           <Routes>
@@ -55,8 +55,8 @@ const PageHeader = () => {
         <Button type="link" onClick={resetRoute}>
           Jira
         </Button>
-        <h3>项目</h3>
-        <h3>用户</h3>
+        <ProjectPopvoer />
+        <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
         <User />
